@@ -1,0 +1,2 @@
+# Context-GEBC
+Code for [LOVEU Challenge 2022](https://sites.google.com/view/loveucvpr22/home) (Track 2 Generic Event Boundary Captioning Challenge). Our model directly takes the whole video clip as input and generate caption for each time boundary parallelly. With this design, the model could learn the context information of each time boundary, thus, the potential boundary-boundary interaction could be modeled. The proposed method achieves a 72.84 score on the test set, and we reaches the $2^{nd}$ place in this challenge.

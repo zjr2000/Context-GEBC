@@ -1,0 +1,14 @@
+id: gebc_clip_omni_5e5_objq50_subject
+base_cfg_path: cfgs/gebc_clip_pdvc_gt.yml
+
+lr: 0.00005
+train_caption_file: data/gebc/train_all_annotation_subject.json
+
+visual_feature_type: ['clip_gebc', 'omni_gebc_stride16']
+visual_feature_folder: ['data/gebc/features/clip_gebc', 'data/gebc/omni_gebc_stride16']
+feature_dim: 2304
+
+support_object_feature: True
+object_feature_dim: 2054
+object_feature_path_map: data/gebc/video_to_frame_index.json
+max_obj_number: 50
