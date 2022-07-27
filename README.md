@@ -18,12 +18,12 @@ You can also directly download the official provided features [here](https://sit
 
 
 Using [VinVL](https://github.com/microsoft/scene_graph_benchmark) to extract region-level features. The region feature of a video is saved to multiple ```.npy``` files, where each single file contains the region feature of a sampled frame. Merge the feature file paths into  ```video_to_frame_index.json``` in the following format:
-```json
+```
 {
     "video_id": [
         "frame_1_feat.npy",
         "frame_2_feat.npy",
-        ...
+        ...     
     ],
     ...
 }
