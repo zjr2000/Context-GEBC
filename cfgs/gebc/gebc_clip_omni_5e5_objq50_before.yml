@@ -5,7 +5,7 @@ lr: 0.00005
 train_caption_file: data/gebc/train_all_annotation_before.json
 
 visual_feature_type: ['clip_gebc', 'omni_gebc_stride16']
-visual_feature_folder: ['data/gebc/features/clip_gebc', 'data/gebc/omni_gebc_stride16']
+visual_feature_folder: ['data/gebc/features/clip_gebc', 'data/gebc/omni_gebc']
 #enable_feature_diff: True
 feature_dim: 2304
 
