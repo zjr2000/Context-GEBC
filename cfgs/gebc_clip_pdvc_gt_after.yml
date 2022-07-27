@@ -1,0 +1,35 @@
+id: gebc_clip_pdvc_gt_after
+base_cfg_path: cfgs/anet_c3d_pdvc_gt.yml
+visual_feature_type: ['clip_gebc']
+visual_feature_folder: ['data/gebc/features/clip']
+train_caption_file: data/gebc/trainset_highest_f1_after.json
+val_caption_file: data/gebc/valset_highest_f1_after.json
+
+invalid_video_json: []
+feature_dim: 768
+
+gt_file_for_eval: ['data/gebc/valset_highest_f1_after.json']
+dict_file: data/gebc/vocabulary_gebc_thres0.json
+vocab_size: 3954
+
+
+huggingface_cache_dir: .cache
+pretrained_language_model: .cache/roberta-base
+gpt_model: .cache/gpt2
+
+
+epoch: 30
+eval_batch_size: 16
+min_epoch_when_save: -1 # save ckpt after epoch 5
+train_use_amp: False
+eval_use_amp: True
+
+# model configs
+num_queries: 30
+ec_alpha: 1.0
+
+frame_embedding_num: 150
+disable_cudnn: True
+eval_tool_version: 2018_cider
+
+batch_size: 8
