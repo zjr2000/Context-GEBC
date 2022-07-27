@@ -8,7 +8,9 @@ Our method achieves a 72.84 score on the test set, and we reaches the $2^{nd}$ p
 Our code is adapted from official implementation from PDVC, please see the original [repo](https://github.com/ttengwang/PDVC) for Preparation.
 
 ## Data
-Using [CLIP](https://github.com/openai/CLIP) to extract frame-level features and [Omnivore](https://github.com/facebookresearch/omnivore) to extract clip-level features. Then, put the extracted features under these two folders:
+Using [CLIP](https://github.com/openai/CLIP) to extract frame-level features and [Omnivore](https://github.com/facebookresearch/omnivore) to extract clip-level features. We use [this](https://github.com/zjr2000/Untrimmed-Video-Feature-Extractor) pipeline to extract features. 
+
+Then, put the extracted features under these two folders:
 ```
 data/gebc/features/clip_gebc,
 data/gebc/omni_gebc
