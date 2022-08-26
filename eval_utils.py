@@ -256,7 +256,7 @@ def evaluate(model, criterion, contrastive_criterion, postprocessors, loader, dv
                             gt_filenames=opt.gt_file_for_eval,
                             para_gt_filenames=opt.gt_file_for_para_eval,
                             dvc_eval_version=dvc_eval_version,
-                            #verbose=verbose
+                            verbose=verbose
                             )
     return scores, loss_sum
 
