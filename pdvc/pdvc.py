@@ -234,7 +234,7 @@ class PDVC(nn.Module):
         if eval_mode or self.opt.caption_loss_coef == 0:
             out, loss = self.parallel_prediction_full(dt, criterion, contrastive_criterion, hs, query_embed,
                                                       init_reference, inter_references, others,
-                                                      disable_iterative_refine, self.opt.eval_disable_captioning)
+                                                      disable_iterative_refine)
         else:
             out, loss = self.parallel_prediction_matched(dt, criterion, contrastive_criterion, hs, query_embed,
                                                          init_reference, inter_references, others,

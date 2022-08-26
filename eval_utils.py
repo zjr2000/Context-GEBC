@@ -129,7 +129,7 @@ def eval_metrics(dvc_filename, gt_filenames, para_gt_filenames, dvc_eval_version
     dvc_score = eval_dvc(json_path=dvc_filename, reference=gt_filenames, version=dvc_eval_version, verbose=verbose)
     dvc_score = {k: sum(v) / len(v) for k, v in dvc_score.items()}
     dvc_score.update(eval_soda(dvc_filename, ref_list=gt_filenames))
-    dvc_score.update(eval_para(dvc_filename, referneces=para_gt_filenames))
+    #dvc_score.update(eval_para(dvc_filename, referneces=para_gt_filenames))
     dvc_score.update({'MetaScore': dvc_score['CIDEr'] + dvc_score['ROUGE_L'] + dvc_score['SPICE']})
     score.update(dvc_score)
     return score
@@ -256,7 +256,7 @@ def evaluate(model, criterion, contrastive_criterion, postprocessors, loader, dv
                             gt_filenames=opt.gt_file_for_eval,
                             para_gt_filenames=opt.gt_file_for_para_eval,
                             dvc_eval_version=dvc_eval_version,
-                            verbose=verbose
+                            #verbose=verbose
                             )
     return scores, loss_sum
 
