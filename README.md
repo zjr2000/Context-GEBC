@@ -1,11 +1,11 @@
 # Context-GEBC
-Code for [LOVEU Challenge 2022](https://sites.google.com/view/loveucvpr22/home) (Track 2 Generic Event Boundary Captioning Challenge). Our model directly takes the whole video clip as input and generate caption for each time boundary parallelly. With this design, the model could learn the context information of each time boundary, thus, the potential boundary-boundary interaction could be modeled. 
+Code for [LOVEU Challenge 2022](https://sites.google.com/view/loveucvpr22/home) (Track 2 Generic Event Boundary Captioning Challenge). Our model directly takes the whole video clip as input and generates a caption for each time boundary parallelly. With this design, the model could learn the context information of each time boundary, thus, the potential boundary-boundary interaction could be modeled. 
 
 
-Our method achieves a 72.84 score on the test set, and we reaches the $2^{nd}$ place in this challenge. The technical report is available [here](https://arxiv.org/abs/2207.01050v1)
+Our method achieves a 72.84 score on the test set, and we reach the $2^{nd}$ place in this challenge. The technical report is available [here](https://arxiv.org/abs/2207.01050v1).
 
 ## Environment
-Our code is adapted from official implementation from PDVC, please see the original [repo](https://github.com/ttengwang/PDVC) for Preparation.
+Our code is adapted from the official implementation of PDVC, please see the original [repo](https://github.com/ttengwang/PDVC) for the environment preparation.
 
 ## Data
 Using [CLIP](https://github.com/openai/CLIP) to extract frame-level features and [Omnivore](https://github.com/facebookresearch/omnivore) to extract clip-level features. We use [this](https://github.com/zjr2000/Untrimmed-Video-Feature-Extractor) pipeline to extract features. 
@@ -16,7 +16,7 @@ data/gebc/features/clip_gebc,
 data/gebc/omni_gebc
 ``` 
 
-You can also directly download the official provided features [here](https://sites.google.com/view/loveucvpr22/home). But, remember to change the ```visual_feature_folder``` and ```feature_dim``` in config file.
+You can also directly download the official provided features [here](https://sites.google.com/view/loveucvpr22/home). But, remember to change the ```visual_feature_folder``` and ```feature_dim``` in the config file.
 
 
 Using [VinVL](https://github.com/microsoft/scene_graph_benchmark) to extract region-level features. The region feature of a video is saved to multiple ```.npy``` files, where each single file contains the region feature of a sampled frame. Merge the feature file paths into  ```video_to_frame_index.json``` in the following format:
@@ -57,4 +57,4 @@ We train three models to predict subject, before and after, the corresponding co
 | After | cfgs/gebc/gebc_clip_omni_5e5_objq50_after.yml | data/gebc/valset_highest_f1_after.json|
 
 ## Acknowledgement
-This repo is mainly based on [PDVC](https://github.com/ttengwang/PDVC). We thanks the authors for their efforts.
+This repo is mainly based on [PDVC](https://github.com/ttengwang/PDVC). We thank the authors for their efforts.
