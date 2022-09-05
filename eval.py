@@ -70,11 +70,11 @@ def main(opt):
     opt.batch_size = opt.eval_batch_size
     if opt.eval_ec_alpha != -1:
         opt.ec_alpha = opt.eval_ec_alpha
-    if opt.eval_disable_contrastive and opt.enable_contrastive:
-        strict_load_pth = False
-        opt.enable_contrastive = False
-    else:
-        strict_load_pth = True
+    #if opt.eval_disable_contrastive and opt.enable_contrastive:
+     #   strict_load_pth = False
+      #  opt.enable_contrastive = False
+    #else:
+    strict_load_pth = True
 
     if not torch.cuda.is_available():
         opt.nthreads = 0
@@ -113,14 +113,12 @@ def main(opt):
 
     if opt.eval_mode == 'test':
         out_json_path = os.path.join(folder_path, 'dvc_results_test.json')
-        evaluate(model, criterion, contrastive_criterion, postprocessors, loader, out_json_path,
-                         logger, alpha=opt.ec_alpha, dvc_eval_version=opt.eval_tool_version, device=opt.eval_device, debug=opt.eval_debug, skip_lang_eval=True, verbose=opt.show_all_results)
+        evaluate(model, criterion, contrastive_criterion, postprocessors, loader, out_json_path, logger, alpha=opt.ec_alpha, dvc_eval_version=opt.eval_tool_version, device=opt.eval_device, debug=False, skip_lang_eval=True, verbose=opt.show_all_results)
     else:
         out_json_path = os.path.join(folder_path, '{}_epoch{}_num{}_alpha{}.json'.format(
             time.strftime("%Y-%m-%d-%H-%M-%S_", time.localtime()) + str(opt.id), epoch, len(loader.dataset),
             opt.ec_alpha))
-        caption_scores, eval_loss = evaluate(model, criterion, contrastive_criterion, postprocessors, loader, out_json_path,
-                         logger, alpha=opt.ec_alpha, dvc_eval_version=opt.eval_tool_version, device=opt.eval_device, debug=opt.eval_debug, skip_lang_eval=False, verbose=opt.show_all_results)
+        caption_scores, eval_loss = evaluate(model, criterion, contrastive_criterion, postprocessors, loader, out_json_path, logger, alpha=opt.ec_alpha, dvc_eval_version=opt.eval_tool_version, device=opt.eval_device, debug=False, skip_lang_eval=False, verbose=opt.show_all_results)
         avg_eval_score = {key: np.array(value).mean() for key, value in caption_scores.items() if key !='tiou'}
         avg_eval_score2 = {key: np.array(value).mean() * 4917 / len(loader.dataset) for key, value in caption_scores.items() if key != 'tiou'}
 
@@ -150,7 +148,7 @@ if __name__ == '__main__':
     parser.add_argument('--eval_transformer_input_type', type=str, default='queries', choices=['gt_proposals', 'queries'])
     parser.add_argument('--gpu_id', type=str, nargs='+', default=['0'])
     parser.add_argument('--eval_device', type=str, default='cuda')
-    parser.add_argument('--eval_nthreads', type=int, default=4)
+    parser.add_argument('--eval_nthreads', type=int, default=0)
     parser.add_argument('--show_all_results', default=True)
     parser.add_argument('--eval_enable_matching_score', action='store_true', default=False)
     parser.add_argument('--eval_matching_score_weight', type=float, default=0.)
